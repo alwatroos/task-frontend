@@ -108,6 +108,7 @@ const transactionSlice = createSlice({
       .addCase(sendMoney.fulfilled, (state, action) => {
         state.loading = false;
         state.balance = state.balance - action.meta.arg.amount;
+        state.transactions = [action.meta.arg, ...state.transactions];
         showSuccess("Successfully sent money!");
       })
       .addCase(sendMoney.rejected, (state, action) => {

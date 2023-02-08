@@ -56,6 +56,7 @@ export const BalanceAndFiltersCard = memo(() => {
       ],
       formName: "FiltersForm",
       buttonText: "Search",
+      buttonId: "searchButton",
       onSubmit,
       onSubmitFailed,
     };
@@ -64,11 +65,12 @@ export const BalanceAndFiltersCard = memo(() => {
     <Card className={"BalanceAndFiltersCard"} {...AOS_FADE_RIGHT}>
       <LoadingIndicator loading={loading} />
       <Card
+        id="balanceCard"
         className={cx(
           "BalanceAndFiltersCard__container",
           "BalanceAndFiltersCard__container--top",
         )}>
-        <AppLabel>
+        <AppLabel id="balanceLabel">
           <strong>Your balance:&nbsp;</strong>
           {balance}
         </AppLabel>

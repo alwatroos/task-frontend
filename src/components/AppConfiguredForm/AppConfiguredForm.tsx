@@ -57,7 +57,7 @@ export function AppConfiguredForm<T>({
       </Flex>
 
       <Form.Item className="AppConfiguredForm__button">
-        <Button type="primary" htmlType="submit">
+        <Button id={config.buttonId} type="primary" htmlType="submit">
           {config.buttonText}
         </Button>
       </Form.Item>

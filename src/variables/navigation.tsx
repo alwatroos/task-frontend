@@ -3,7 +3,7 @@
  * https://github.com/alwatroos
  */
 import { AboutScreen } from "screens/AboutScreen";
-import { HomeScreen } from "screens/home/HomeScreen";
+import { HomeScreen } from "screens/HomeScreen";
 import { TRouteDef } from "types";
 
 export const routes: TRouteDef[] = [

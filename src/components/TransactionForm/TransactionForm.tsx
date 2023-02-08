@@ -134,6 +134,7 @@ export const TransactionForm = memo(() => {
       ],
       formName: "TransactionForm",
       buttonText: "Send Money",
+      buttonId: "sendMoneyButton",
       onSubmit,
       onSubmitFailed,
     };
