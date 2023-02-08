@@ -1,0 +1,3 @@
+@function getTextColor($type) {
+  @return var(--color- + $type + -contrast);
+}

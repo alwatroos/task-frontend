@@ -1,0 +1,23 @@
+@import "../../../theme/theme.scss";
+
+.HomeScreen {
+  width: 100vw;
+  max-height: 99vh;
+  overflow-y: auto;
+
+  &__content {
+    height: inherit;
+    width: 100%;
+  }
+  &__container {
+    margin: 0;
+
+    @include low-res-mixin {
+      flex-direction: column-reverse;
+
+    }
+    @include medium-res-mixin {
+      flex-direction: column-reverse;
+    }
+  }
+}

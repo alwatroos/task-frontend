@@ -1,0 +1,16 @@
+@import '../../theme/theme.scss';
+
+.AppLabel {
+    position: relative;
+    font-size: x-large;
+    font-weight: 450;
+    @include low-res-mixin {
+        font-size: smaller;
+    }
+    @include medium-res-mixin {
+        font-size: small;
+    }
+    @include high-res-mixin {
+        font-size: medium;
+    }
+}

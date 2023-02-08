@@ -1,0 +1,18 @@
+@import '../../theme/theme.scss';
+
+.AppTitle {
+    position: relative;
+    font-size: x-large;
+    font-weight: 450;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @include low-res-mixin {
+        font-size: large;
+    }
+    @include medium-res-mixin {
+        font-size: x-large;
+    }
+    @include high-res-mixin {
+        font-size: xx-large;
+    }
+}

@@ -1,0 +1,17 @@
+.AppConfiguredForm {
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+  &__button {
+    margin: 0 auto 0 auto;
+  }
+  &__title {
+    margin: auto;
+  }
+  &__item {
+    width: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+$app-backgroud-color: var(--ion-color-light);
+
+.AppScreen {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: $app-backgroud-color;
+    padding-top: calc(var(--ion-safe-area-top) + 35px);
+}

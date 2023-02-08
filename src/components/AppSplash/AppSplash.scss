@@ -1,0 +1,27 @@
+$app-backgroud-color: rgba(#000, 0.6);
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.AppSplash {
+  height: 100%;
+  width: 100%;
+  z-index: 1000000;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  background: $app-backgroud-color;
+  &__label {
+    text-align: center;
+    margin: auto;
+    animation: flip 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  }
+}

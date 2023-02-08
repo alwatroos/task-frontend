@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+* {
+  font-family: Tahoma, sans-serif;
+}
+
+
+.theme-light {
+  --color-primary: #0060df;
+  --color-secondary: #fbfbfe;
+  --color-accent: #fd6f53;
+  --font-color: #000000;
+}
+
+.theme-dark {
+	/* --color-primary: #212027;
+	--color-primary-rgb: 33,32,39;
+	--color-primary-contrast: #ffffff;
+	--color-primary-contrast-rgb: 255,255,255;
+	--color-primary-shade: #1d1c22;
+	--color-primary-tint: #37363d;
+
+	--color-secondary: #6c6d7f;
+	--color-secondary-rgb: 108,109,127;
+	--color-secondary-contrast: #ffffff;
+	--color-secondary-contrast-rgb: 255,255,255;
+	--color-secondary-shade: #5f6070;
+	--color-secondary-tint: #7b7c8c;
+
+	--color-tertiary: #9297ce;
+	--color-tertiary-rgb: 146,151,206;
+	--color-tertiary-contrast: #000000;
+	--color-tertiary-contrast-rgb: 0,0,0;
+	--color-tertiary-shade: #8085b5;
+	--color-tertiary-tint: #9da1d3;
+
+	--color-success: #29a35a;
+	--color-success-rgb: 41,163,90;
+	--color-success-contrast: #ffffff;
+	--color-success-contrast-rgb: 255,255,255;
+	--color-success-shade: #248f4f;
+	--color-success-tint: #3eac6b;
+
+	--color-warning: #d8aa13;
+	--color-warning-rgb: 216,170,19;
+	--color-warning-contrast: #000000;
+	--color-warning-contrast-rgb: 0,0,0;
+	--color-warning-shade: #be9611;
+	--color-warning-tint: #dcb32b;
+
+	--color-danger: #be3c4d;
+	--color-danger-rgb: 190,60,77;
+	--color-danger-contrast: #ffffff;
+	--color-danger-contrast-rgb: 255,255,255;
+	--color-danger-shade: #a73544;
+	--color-danger-tint: #c5505f;
+
+	--color-medium: #71747f;
+	--color-medium-rgb: 113,116,127;
+	--color-medium-contrast: #ffffff;
+	--color-medium-contrast-rgb: 255,255,255;
+	--color-medium-shade: #636670;
+	--color-medium-tint: #7f828c;
+
+	--color-light: #f4f5f8;
+	--color-light-rgb: 244,245,248;
+	--color-light-contrast: #000000;
+	--color-light-contrast-rgb: 0,0,0;
+	--color-light-shade: #d7d8da;
+	--color-light-tint: #f5f6f9;
+
+	--color-transparent: transparent;
+	--color-transparent-rgb: 0,0,0,0.0;
+	--color-transparent-contrast: #ffffff;
+	--color-transparent-contrast-rgb: 255,255,255;
+	--color-transparent-shade: transparent;
+	--color-transparent-tint: transparent; */
+}

@@ -1,0 +1,14 @@
+@import "../../theme/theme.scss";
+
+.TransactionsTable {
+  width: 100%;
+  margin: 5px;
+  &__table {
+    width: 100%;
+    @include low-res-mixin {
+      .ant-table-cell {
+        font-size: 10px;
+      }
+    }
+  }
+}

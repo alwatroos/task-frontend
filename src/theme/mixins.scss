@@ -1,0 +1,52 @@
+$colorsDefinition: primary, secondary, tertiary, success, warning, danger,
+  medium, light, transparent;
+@mixin low-res-mixin {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin medium-res-mixin {
+  @media screen and (min-width: 769px) and (max-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin high-res-mixin {
+  @media screen and (min-width: 1081px) {
+    @content;
+  }
+}
+
+@mixin click-effect {
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  }
+}
+
+@mixin color-modes {
+  @each $clr in $colorsDefinition {
+    &--#{$clr} {
+      color: var(--color-#{$clr}-contrast);
+      background: var(--color-#{$clr});
+      &:hover {
+        background: var(--color-#{$clr}-tint) !important;
+      }
+    }
+  }
+}
+
+@each $clr in $colorsDefinition {
+  .Colors--#{$clr} {
+    color: var(--color-#{$clr}-contrast);
+    border-color: var(--color-#{$clr});
+    background: rgba(var(--color-#{$clr}-rgb), 0.9);
+    &:hover {
+      background: rgba(var(--color-#{$clr}-rgb), 1);
+    }
+    &::after {
+      background: rgba(var(--color-#{$clr}-rgb), 0.9);
+    }
+  }
+}
