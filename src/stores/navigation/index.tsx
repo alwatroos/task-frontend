@@ -16,6 +16,7 @@ export interface INavigationState extends ICommonState {
 const stateName = "navigation";
 const initialState: INavigationState = {
   loading: false,
+  currentScreen: "/",
 };
 
 const navigationSlice = createSlice({
@@ -35,6 +36,10 @@ const navigationSlice = createSlice({
 export const navbarRectSelector = ({
   navigation: { navbarRect },
 }: IAppRootState) => navbarRect;
+
+export const currentPathSelector = ({
+  navigation: { currentScreen },
+}: IAppRootState) => currentScreen;
 
 export const { navigateTo, setNavBarRect } = navigationSlice.actions;
 

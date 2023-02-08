@@ -15,12 +15,16 @@ export const Header = ({
   ...divProps
 }: React.HTMLAttributes<HTMLDivElement>) => {
   const { routes } = useAppRoutes();
-  const { goTo } = useNavigation();
+  const { goTo, currentScreen } = useNavigation();
+
   return (
     <Flex {...divProps} className={cx("Header", className)} mode="row">
       <Flex className="Header__container" mode="row">
         {routes.map((r) => (
-          <Button key={r.path} type="text" onClick={() => goTo(r.path)}>
+          <Button
+            key={r.path}
+            type={currentScreen === r.path ? "link" : "text"}
+            onClick={() => goTo(r.path)}>
             {r.label}
           </Button>
         ))}

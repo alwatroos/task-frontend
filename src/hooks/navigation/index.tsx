@@ -2,14 +2,15 @@
  * Copyright alwatroos
  * https://github.com/alwatroos
  */
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { navigateTo } from "stores/navigation";
+import { useAppDispatch, useAppSelector } from "stores";
+import { currentPathSelector, navigateTo } from "stores/navigation";
 
 export const useNavigation = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const currentScreen = useAppSelector(currentPathSelector);
   const goTo = (path: string) => {
     navigate(path);
     dispatch(navigateTo(path));
@@ -21,5 +22,5 @@ export const useNavigation = () => {
     }, 300);
   };
 
-  return { goTo, goBack, location };
+  return { goTo, goBack, location, currentScreen };
 };

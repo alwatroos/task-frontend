@@ -8,18 +8,19 @@ import { AppScreen } from "components/AppScreen";
 import { AppTitle } from "components/AppTitle";
 import { Flex } from "components/Flex";
 import { memo } from "react";
+import { AOS_FADE_DOWN } from "variables";
 
 import "./AboutScreen.scss";
 
 export const AboutScreen = memo(() => {
   return (
     <AppScreen className={"AboutScreen"}>
-      <Card className="AboutScreen__card">
+      <Card className="AboutScreen__card" {...AOS_FADE_DOWN}>
         <Flex mode="column">
           <AppTitle>About</AppTitle>
           <Flex mode="row">
             <AppLabel className="AboutScreen__label">
-              Author:
+              Author:{" "}
               <strong>{process.env.REACT_APP_AUTHOR || "alwatroos"}</strong>
             </AppLabel>
           </Flex>
