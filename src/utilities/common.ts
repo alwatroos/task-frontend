@@ -10,6 +10,7 @@ export function isBlank<T>(obj: T) {
 export function isNotBlank<T>(obj: T) {
   return !isBlank(obj);
 }
+
 export async function withDelay<T>(func: () => T, delay: number) {
   return new Promise<T>((resolve) => {
     setTimeout(() => {

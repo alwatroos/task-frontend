@@ -16,25 +16,14 @@ import { useSelector } from "react-redux";
 import { navbarRectSelector } from "stores/navigation";
 import "./HomeScreen.scss";
 
-export const HomeScreen = ({
+export default ({
   className,
   ...divProps
 }: React.HTMLAttributes<HTMLDivElement>) => {
   const navbarRect = useSelector(navbarRectSelector);
   const resolution = useResolution();
   return (
-    <AppScreen
-      {...divProps}
-      className={cx("HomeScreen", className)}
-      style={
-        isMobile
-          ? {
-              maxHeight: `calc(100vh - ${
-                navbarRect?.height || 0
-              }px - env(safe-area-inset-top) - 40px)`,
-            }
-          : {}
-      }>
+    <AppScreen {...divProps} className={cx("HomeScreen", className)}>
       <Flex mode="column" className="HomeScreen__content">
         <Flex
           className="HomeScreen__container"

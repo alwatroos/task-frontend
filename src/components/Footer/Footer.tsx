@@ -2,17 +2,13 @@
  * Copyright alwatroos
  * https://github.com/alwatroos
  */
-import cx from "classnames";
 import { Flex } from "components/Flex";
-import React from "react";
+import { memo } from "react";
 import "./Footer.scss";
 
-export const Footer = ({
-  className,
-  ...divProps
-}: React.HTMLAttributes<HTMLDivElement>) => {
+export const Footer = memo(() => {
   return (
-    <Flex {...divProps} className={cx("Footer", className)} mode="row">
+    <Flex className="Footer" mode="row">
       <a
         className="Footer__link"
         href="https://github.com/alwatroos"
@@ -21,4 +17,4 @@ export const Footer = ({
       </a>
     </Flex>
   );
-};
+});

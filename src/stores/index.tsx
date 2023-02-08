@@ -6,14 +6,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { combineReducers } from "redux";
 import reduxLogger from "redux-logger";
-import { createEpicMiddleware } from "redux-observable";
+import { combineEpics, createEpicMiddleware } from "redux-observable";
 import thunk from "redux-thunk";
 import { configuration } from "./configuration";
 import { navigation } from "./navigation";
 import { transaction } from "./transaction";
+import { transactionEpics } from "./transaction/epics";
 export * from "./AppRootState";
-
-const epicMiddleware = createEpicMiddleware();
 
 const initializeStore = () => {
   const rootReducer = combineReducers({
@@ -21,7 +20,10 @@ const initializeStore = () => {
     navigation,
     transaction,
   });
-  return configureStore({
+  const epicMiddleware = createEpicMiddleware();
+  const rootEpic = combineEpics(...transactionEpics);
+
+  const store = configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
@@ -29,6 +31,9 @@ const initializeStore = () => {
         .concat(epicMiddleware)
         .concat(reduxLogger),
   });
+
+  epicMiddleware.run(rootEpic);
+  return store;
 };
 
 export const store = initializeStore();

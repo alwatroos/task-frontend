@@ -3,10 +3,9 @@
  * https://github.com/alwatroos
  */
 import { Button, Form, Input } from "antd";
-import { AppLabel } from "components/AppLabel";
 import { Flex } from "components/Flex";
 import { useResolution } from "hooks";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import "./AppConfiguredForm.scss";
 import { IAppConfiguredFormProps } from "./types";
 

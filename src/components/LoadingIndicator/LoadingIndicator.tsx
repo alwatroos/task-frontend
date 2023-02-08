@@ -2,9 +2,8 @@
  * Copyright alwatroos
  * https://github.com/alwatroos
  */
-import cx from "classnames";
 import { AppLoadingAnimation } from "components/AppLoadingAnimation";
-import React, { memo } from "react";
+import { memo } from "react";
 import "./LoadingIndicator.scss";
 
 interface ILoadingIndicatorProps {

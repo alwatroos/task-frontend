@@ -16,7 +16,7 @@ export interface IGetTransactionPaginationPayload {
 export interface ITransactions {
   transactions: ITransaction[];
   totalCount: number;
-  filter: IGetTransactionPaginationPayload;
+  filter: ITransactionFilters;
 }
 export interface ITransactionState extends ICommonState {
   initialized: boolean;
@@ -58,11 +58,20 @@ export const fetchTransactions = createAsyncThunk(
       `${process.env.REACT_APP_API_URL}/transactions?${filters.join("&")}`,
     );
     const result: ITransactions = {
-      filter: { size, page },
+      filter: { size, page, beneficiary, description },
       transactions: await response.json(),
       totalCount: +(response.headers.get("X-Total-Count") || "0"),
     };
     return result;
+  },
+);
+
+export const removeTransaction = createAsyncThunk(
+  `${stateName}/removeTransaction`,
+  async (id: number) => {
+    await fetch(`${process.env.REACT_APP_API_URL}/transactions/${id}`, {
+      method: "DELETE",
+    });
   },
 );
 
@@ -108,13 +117,33 @@ const transactionSlice = createSlice({
       .addCase(sendMoney.fulfilled, (state, action) => {
         state.loading = false;
         state.balance = state.balance - action.meta.arg.amount;
-        state.transactions = [action.meta.arg, ...state.transactions];
+        state.transactions = [
+          {
+            ...action.meta.arg,
+            id: Math.max(...state.transactions.map((it) => it.id)) + 1,
+          },
+          ...state.transactions,
+        ];
         showSuccess("Successfully sent money!");
       })
       .addCase(sendMoney.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error;
         showError("Cannot send money right now!");
+      })
+      .addCase(removeTransaction.pending, (state) => {
+        state.loading;
+      })
+      .addCase(removeTransaction.fulfilled, (state, action) => {
+        state.loading = false;
+        state.transactions = [
+          ...state.transactions.filter((it) => it.id !== action.meta.arg),
+        ];
+        state.totalCount = state.totalCount - 1;
+      })
+      .addCase(removeTransaction.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error;
       });
   },
 });

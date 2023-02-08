@@ -2,13 +2,13 @@
  * Copyright alwatroos
  * https://github.com/alwatroos
  */
-import { Card, Table } from "antd";
-import { LoadingIndicator } from "components/LoadingIndicator";
-import { useResolution } from "hooks";
-import { useEffect, useMemo, useRef } from "react";
+import { Button, Card, Table } from "antd";
+import { ITransaction } from "models";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "stores";
 import {
   fetchTransactions,
+  removeTransaction,
   transactionStateSelector,
 } from "stores/transaction";
 import { AOS_FADE_UP } from "variables";
@@ -16,7 +16,6 @@ import "./TransactionsTable.scss";
 
 export const TransactionsTable = () => {
   const dispatch = useAppDispatch();
-  const resolution = useResolution();
 
   const {
     filter: { size: pageSize },
@@ -24,6 +23,11 @@ export const TransactionsTable = () => {
     loading,
     totalCount,
   } = useAppSelector(transactionStateSelector);
+
+  const onDelete = useCallback(
+    (id: number) => dispatch(removeTransaction(id)),
+    [dispatch],
+  );
 
   const columns = useRef([
     {
@@ -46,19 +50,22 @@ export const TransactionsTable = () => {
       dataIndex: "date",
       key: "date",
     },
+    {
+      title: "Actions",
+      key: "action",
+      render: (_: unknown, record: ITransaction) => (
+        <Button danger onClick={() => onDelete(record.id)}>
+          Delete
+        </Button>
+      ),
+    },
   ]).current;
   const tableDataSource = useMemo(
     () =>
       transactions.map((tr) => ({
         ...tr,
         key: tr.id,
-        date:
-          typeof tr.date === "string"
-            ? (tr.date as string)
-                .replaceAll("T", " ")
-                .replaceAll("Z", "")
-                .replaceAll("\\.d+", "")
-            : tr.date?.toISOString(),
+        date: tr.date.split("T")[0],
       })),
     [transactions],
   );
@@ -69,17 +76,20 @@ export const TransactionsTable = () => {
 
   return (
     <Card className="TransactionsTable" {...AOS_FADE_UP}>
-      <LoadingIndicator loading={loading} />
       <Table
         className="TransactionsTable__table"
         dataSource={tableDataSource}
         columns={columns}
+        loading={loading}
+        rowKey={(record) => record.id}
         scroll={{
           y: "38vh",
         }}
         pagination={{
           total: totalCount,
           pageSize,
+          pageSizeOptions: [5, 10, 15, 20, 50],
+          defaultPageSize: 20,
           onChange(page, pageSize) {
             dispatch(fetchTransactions({ size: pageSize, page }));
           },

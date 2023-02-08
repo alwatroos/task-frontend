@@ -12,7 +12,7 @@ import { AOS_FADE_DOWN } from "variables";
 
 import "./AboutScreen.scss";
 
-export const AboutScreen = memo(() => {
+export default memo(() => {
   return (
     <AppScreen className={"AboutScreen"}>
       <Card className="AboutScreen__card" {...AOS_FADE_DOWN}>

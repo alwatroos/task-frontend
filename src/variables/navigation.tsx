@@ -10,15 +10,13 @@ export const routes: TRouteDef[] = [
   {
     type: "both",
     children: <HomeScreen />,
-    label: "Navigation.home",
+    label: "Home",
     path: "/",
-    icon: "Home",
   },
   {
     type: "both",
     children: <AboutScreen />,
-    label: "Navigation.about",
+    label: "About",
     path: "/about",
-    icon: "Person",
   },
 ];

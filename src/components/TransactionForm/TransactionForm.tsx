@@ -7,27 +7,21 @@ import {
   AppConfiguredForm,
   IAppFormConfiguration,
 } from "components/AppConfiguredForm";
-import { LoadingIndicator } from "components/LoadingIndicator";
 import { ITransaction } from "models";
 import { memo, useCallback, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "stores";
-import {
-  areTransactionsLoadingSelector,
-  balanceSelector,
-  sendMoney,
-} from "stores/transaction";
-import { showError } from "utilities";
+import { balanceSelector, sendMoney } from "stores/transaction";
+import { formatDate, showError } from "utilities";
 import { AOS_FADE_LEFT } from "variables";
 import "./TransactionForm.scss";
 
 export const TransactionForm = memo(() => {
   const dispatch = useAppDispatch();
   const balance = useAppSelector(balanceSelector);
-  const loading = useAppSelector(areTransactionsLoadingSelector);
 
   const onSubmit = useCallback(
     (transaction: ITransaction) => {
-      transaction.date = new Date();
+      transaction.date = formatDate(new Date());
       dispatch(sendMoney(transaction));
     },
     [dispatch],
@@ -142,7 +136,6 @@ export const TransactionForm = memo(() => {
 
   return (
     <Card className="TransactionForm" {...AOS_FADE_LEFT}>
-      <LoadingIndicator loading={loading} />
       <AppConfiguredForm title="New Transaction" config={formConfig} />
     </Card>
   );

@@ -6,7 +6,6 @@ import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { routes } from "variables";
-import "./AppNavigation.scss";
 
 export const AppNavigation = () => {
   return (

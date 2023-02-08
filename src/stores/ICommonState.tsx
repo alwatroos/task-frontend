@@ -3,6 +3,6 @@
  * https://github.com/alwatroos
  */
 export interface ICommonState {
-  error?: any;
+  error?: unknown;
   loading: boolean;
 }

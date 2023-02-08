@@ -2,4 +2,6 @@
  * Copyright alwatroos
  * https://github.com/alwatroos
  */
-export * from "./HomeScreen";
+import { lazy } from "react";
+
+export const HomeScreen = lazy(() => import("./HomeScreen"));

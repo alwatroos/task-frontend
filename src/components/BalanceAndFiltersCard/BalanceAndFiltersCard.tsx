@@ -10,12 +10,10 @@ import {
 } from "components/AppConfiguredForm";
 import { AppLabel } from "components/AppLabel";
 import { Flex } from "components/Flex";
-import { LoadingIndicator } from "components/LoadingIndicator";
 import { ITransactionFilters } from "models";
 import { memo, useCallback, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "stores";
 import {
-  areTransactionsLoadingSelector,
   balanceSelector,
   fetchTransactions,
   transactionFilterSelector,
@@ -27,7 +25,6 @@ import "./BalanceAndFiltersCard.scss";
 export const BalanceAndFiltersCard = memo(() => {
   const dispatch = useAppDispatch();
   const balance = useAppSelector(balanceSelector);
-  const loading = useAppSelector(areTransactionsLoadingSelector);
   const { size } = useAppSelector(transactionFilterSelector);
   const onSubmit = useCallback(
     (filters: ITransactionFilters) => {
@@ -61,9 +58,9 @@ export const BalanceAndFiltersCard = memo(() => {
       onSubmitFailed,
     };
   }, [balance, onSubmit, onSubmitFailed]);
+
   return (
     <Card className={"BalanceAndFiltersCard"} {...AOS_FADE_RIGHT}>
-      <LoadingIndicator loading={loading} />
       <Card
         id="balanceCard"
         className={cx(
