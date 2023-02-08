@@ -11,7 +11,7 @@ interface IAppFormFieldDef {
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
   multiline?: boolean;
-  validator?: (val: any) => boolean;
+  validator?: <T>(val: T) => boolean;
   customElement?: JSX.Element;
   rules?: Rule[];
 }
@@ -24,10 +24,6 @@ export interface IAppFormConfiguration<T> {
   buttonText: string;
   buttonId?: string;
   title?: string;
-}
-
-export interface IAppFormValues {
-  [key: string]: any;
 }
 
 export interface IAppConfiguredFormProps<T> {

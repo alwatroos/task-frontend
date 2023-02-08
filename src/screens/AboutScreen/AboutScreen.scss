@@ -4,4 +4,12 @@
     text-align: center;
     align-items: center;
     align-content: center;
+    &__card {
+        margin: auto;
+        width: 50%;
+        height: 50%;
+    }
+    &__label {
+        margin:auto;
+    }
 }

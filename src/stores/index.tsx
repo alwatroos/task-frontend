@@ -47,5 +47,6 @@ export type TRootState = ReturnType<typeof store.getState>;
 export const getStore = () => store;
 export const getStateType = () => typeof store.getState();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useAppDispatch = () => useDispatch<any>();
 export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;

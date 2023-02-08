@@ -3,10 +3,13 @@
  * https://github.com/alwatroos
  */
 
-export const isBlank = (obj: any) => obj === null || obj === undefined;
+export function isBlank<T>(obj: T) {
+  return obj === null || obj === undefined;
+}
 
-export const isNotBlank = (obj: any) => !isBlank(obj);
-
+export function isNotBlank<T>(obj: T) {
+  return !isBlank(obj);
+}
 export async function withDelay<T>(func: () => T, delay: number) {
   return new Promise<T>((resolve) => {
     setTimeout(() => {

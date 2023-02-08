@@ -5,26 +5,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ICommonState } from "../ICommonState";
 
-interface ITranslation {
-  [key: string]: string;
-}
-
-interface IConfigurations {
-  translations?: ITranslation;
-  [key: string]: any; //we don't know types here
-}
-
 export interface IConfigurationState extends ICommonState {
   initialized: boolean;
-  configurations: IConfigurations;
 }
 
 const initialState: IConfigurationState = {
   loading: false,
   initialized: false,
-  configurations: {
-    translations: {},
-  },
 };
 
 export const fetchConfiguration = createAsyncThunk(
